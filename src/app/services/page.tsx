@@ -15,75 +15,108 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import TrustedCarousel from "./TrustedCarousel";
 import VideoDemoSection from "./VideoDemoSection";
-import FeaturesAndTestimonials from "./FeaturesAndTestimonials";
-import SecuritySection from "./SecuritySection";
+import AchievementsSection from "./AchevementsSection";
 import { motion } from "framer-motion";
+import EngagementModelsSection from "./EngagementModels";
+import WhyChooseUs from "./WhyChooseUs";
+import CaseStudiesSection from "./CaseStudies";
 
 const services = [
+  // Core Development
   {
-    title: "Custom Web Development",
-    desc: "High-performance websites and web apps using modern stacks.",
+    title: "Custom Software Development",
+    desc: "Web apps, desktop software, and enterprise solutions tailored for your business.",
     icon: Code2,
   },
   {
     title: "Mobile App Development",
-    desc: "iOS/Android apps with native performance and great UX.",
+    desc: "Native (iOS, Android) and cross-platform apps with modern UX.",
     icon: Smartphone,
   },
   {
-    title: "Cloud & DevOps",
-    desc: "Scalable infrastructure, CI/CD, observability, and cost optimization.",
+    title: "Web Development",
+    desc: "Full-stack solutions using React, Angular, Node.js, .NET, and more.",
     icon: Cloud,
   },
   {
-    title: "Security & Compliance",
-    desc: "App hardening, audits, and best-practice security workflows.",
-    icon: Shield,
+    title: "Cloud & DevOps",
+    desc: "AWS, Azure, GCP setups, CI/CD pipelines, observability, and IaC.",
+    icon: Workflow,
   },
+
+  // Advanced / Trending
   {
-    title: "Data & Databases",
-    desc: "Schema design, migrations, performance tuning, and analytics.",
-    icon: Database,
-  },
-  {
-    title: "AI Integrations",
-    desc: "Practical AI features integrated into your product securely.",
+    title: "AI & Machine Learning",
+    desc: "Chatbots, predictive analytics, NLP, computer vision, and AI integration.",
     icon: Wand2,
   },
   {
-    title: "Process Automation",
-    desc: "Automate repetitive workflows to save time and cost.",
+    title: "Data Engineering & Analytics",
+    desc: "Data warehousing, Big Data pipelines, and BI dashboards.",
+    icon: Database,
+  },
+  {
+    title: "IoT & Embedded Solutions",
+    desc: "Smart devices, wearables, and industrial IoT integrations.",
+    icon: Shield,
+  },
+  {
+    title: "Blockchain & Web3",
+    desc: "Smart contracts, DApps, crypto wallets, and token integrations.",
+    icon: Rocket,
+  },
+
+  // Business / Enterprise
+  {
+    title: "Enterprise Solutions",
+    desc: "ERP, CRM, HRMS, PowerApps, SharePoint, and workflow automation.",
     icon: Workflow,
   },
   {
-    title: "Product Launch & Growth",
-    desc: "Go-to-market setup, analytics, and iterative improvement.",
+    title: "SaaS Development",
+    desc: "End-to-end SaaS products with multi-tenancy, billing, and scaling.",
+    icon: Cloud,
+  },
+
+  // QA & Support
+  {
+    title: "Software Testing & QA",
+    desc: "Automated/manual testing, performance, and compliance audits.",
+    icon: Shield,
+  },
+  {
+    title: "Maintenance & Support",
+    desc: "Bug fixes, performance optimization, and version upgrades.",
+    icon: Code2,
+  },
+
+  // Add-ons
+  {
+    title: "UI/UX Design",
+    desc: "Wireframes, prototyping, usability testing, and responsive design.",
+    icon: Smartphone,
+  },
+  {
+    title: "IT Consulting & Strategy",
+    desc: "Tech roadmaps, architecture design, and legacy modernization.",
+    icon: Cloud,
+  },
+  {
+    title: "Dedicated Teams",
+    desc: "Hire developers on-demand, remote/offshore development teams.",
     icon: Rocket,
   },
 ];
 
 export default function ServicesPageClient() {
   return (
-    <main className="relative min-h-screen w-full text-gray-200 overflow-hidden">
-      {/* Background Gradient */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 50% 30%, #2f195f 0%, #120d2e 25%, #0d1117 50%)",
-        }}
-      />
-
-      {/* Purple Glow */}
-      <div
-        className="absolute h-px w-px rounded-full bg-transparent -z-10"
-        style={{
-          top: "40%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          boxShadow: "0 0 120px 120px rgba(124, 58, 237, 0.25)",
-        }}
-      />
+    <main className="relative min-h-screen w-full text-gray-800 overflow-hidden bg-gradient-to-b from-indigo-50 via-white to-pink-50">
+      {/* Subtle animated light blobs in background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-10 left-1/4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+      </div>
 
       {/* Hero Section */}
       <motion.section
@@ -93,14 +126,14 @@ export default function ServicesPageClient() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ amount: 0.2 }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
           Build and ship software on a single, collaborative platform
         </h1>
-        <p className="mt-4 text-base sm:text-lg text-gray-400">
+        <p className="mt-4 text-base sm:text-lg text-gray-600">
           Join the world’s most widely adopted AI-powered developer platform.
         </p>
 
-        {/* GitHub-style Email + Button */}
+        {/* Email Signup & CTA */}
         <div className="mx-auto mt-8 flex w-full max-w-lg flex-col items-center justify-center gap-2 sm:flex-row">
           <form className="relative flex w-full flex-1 items-center">
             <label htmlFor="email-signup" className="sr-only">
@@ -114,7 +147,7 @@ export default function ServicesPageClient() {
             />
             <Button
               type="submit"
-              className="absolute bottom-1 right-1 top-1 rounded bg-[#3FB950] px-4 text-base font-semibold text-white hover:bg-[#48c95a]"
+              className="absolute bottom-1 right-1 top-1 rounded bg-indigo-600 px-4 text-base font-semibold text-white hover:bg-indigo-700"
             >
               Sign up
             </Button>
@@ -122,11 +155,9 @@ export default function ServicesPageClient() {
           <Button
             asChild
             variant="outline"
-            className="h-12 w-full border-2 border-white bg-transparent px-6 text-base font-medium text-white hover:border-white hover:bg-white/20 sm:w-auto transition-colors"
+            className="h-12 w-full border-2 border-gray-800 bg-transparent px-6 text-base font-medium text-gray-900 hover:bg-gray-200 sm:w-auto transition-colors"
           >
-            <a href="/copilot" className="text-white hover:text-white">
-              Try Our AI Copilot
-            </a>
+            <Link href="/copilot">Try Our AI Copilot</Link>
           </Button>
         </div>
       </motion.section>
@@ -137,19 +168,19 @@ export default function ServicesPageClient() {
           {services.map(({ title, desc, icon: Icon }, i) => (
             <motion.div
               key={title}
-              className="group rounded-xl bg-[#161b22] p-6 shadow-md hover:shadow-lg hover:bg-[#1c2128] transition duration-300"
+              className="group rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition duration-300"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
               viewport={{ amount: 0.2 }}
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-white">{title}</h3>
+                <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
               </div>
-              <p className="mt-3 text-gray-400">{desc}</p>
+              <p className="mt-3 text-gray-600">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -164,24 +195,26 @@ export default function ServicesPageClient() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-lg border border-gray-600 px-4 py-2 text-sm font-medium text-gray-200 hover:bg-gray-800 transition"
+            className="inline-flex items-center justify-center rounded-lg border border-gray-400 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 transition"
           >
             Contact Us
           </Link>
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition"
+            className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition"
           >
             Get a Quote
           </Link>
         </motion.div>
       </section>
 
-      {/* Other Sections */}
+      {/* Additional Sections */}
       <TrustedCarousel />
       <VideoDemoSection />
-      <FeaturesAndTestimonials />
-      <SecuritySection />
+      <EngagementModelsSection />
+      <WhyChooseUs />
+      <AchievementsSection />
+      <CaseStudiesSection />
     </main>
   );
 }

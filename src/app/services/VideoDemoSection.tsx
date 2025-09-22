@@ -21,37 +21,24 @@ export default function VideoDemoSection() {
 
   return (
     <motion.section
-      className="relative py-20 text-center overflow-hidden"
+      className="relative py-20 text-center overflow-hidden bg-gradient-to-b from-indigo-50 via-white to-pink-50"
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ amount: 0.2 }} // 👈 animates every time you scroll down
+      viewport={{ amount: 0.2 }}
     >
-      {/* Background Gradient */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 50% 30%, #2f195f 0%, #120d2e 25%, #0d1117 50%)",
-        }}
-      />
-
-      {/* Purple Glow */}
-      <div
-        className="absolute h-px w-px rounded-full bg-transparent -z-10"
-        style={{
-          top: "40%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          boxShadow: "0 0 120px 120px rgba(124, 58, 237, 0.25)",
-        }}
-      />
+      {/* Pastel Blobs for Light Theme */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-10 left-1/4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+      </div>
 
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
           Accelerate performance
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
           With our AI-powered tools embedded throughout your workflow, you can
           simplify your toolchain, automate tasks, and enhance your developer
           experience.
@@ -61,7 +48,7 @@ export default function VideoDemoSection() {
         <div className="mt-12 relative flex justify-center">
           <video
             ref={videoRef}
-            className="w-full max-w-lg h-auto rounded-xl shadow-lg"
+            className="w-full max-w-lg h-auto rounded-xl shadow-lg border border-gray-200"
             muted
             loop
             playsInline
@@ -74,25 +61,26 @@ export default function VideoDemoSection() {
           </video>
 
           {/* Play/Pause Button */}
+          {/* Play/Pause Button */}
           <button
             onClick={handleTogglePlay}
-            className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/40 transition"
+            className="absolute bottom-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white/90 shadow-lg transition"
           >
             <svg
-              className="h-12 w-12 text-white"
+              className="h-12 w-12 text-gray-900"
               fill="currentColor"
               viewBox="0 0 84 84"
             >
-              <circle cx="42" cy="42" r="42" opacity="0.5" />
+              <circle cx="42" cy="42" r="42" opacity="0.3" />
               {isPlaying ? (
                 // Pause icon
                 <g>
-                  <rect x="30" y="28" width="8" height="28" fill="white" />
-                  <rect x="46" y="28" width="8" height="28" fill="white" />
+                  <rect x="30" y="28" width="8" height="28" fill="gray-900" />
+                  <rect x="46" y="28" width="8" height="28" fill="gray-900" />
                 </g>
               ) : (
                 // Play icon
-                <polygon points="33,28 33,56 57,42" fill="white" />
+                <polygon points="33,28 33,56 57,42" fill="gray-900" />
               )}
             </svg>
           </button>
