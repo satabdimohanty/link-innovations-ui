@@ -2,30 +2,51 @@
 
 import Head from "next/head";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
     <>
       <Head>
         <title>Contact | Link Innovations</title>
-        <meta
+        <meta 
           name="description"
           content="Get in touch with Link Innovations to discuss your project."
         />
       </Head>
 
-      <main className="relative min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50 text-gray-800 flex flex-col items-center justify-center px-6 lg:px-12 overflow-hidden">
+      <main className="relative min-h-screen bg-gradient-to-r from-blue-200 via-gray-300 to-gray-200 text-gray-800 flex flex-col items-center justify-center px-6 lg:px-12 overflow-hidden">
         {/* Hero Section */}
-        <section className="relative w-full max-w-3xl flex flex-col items-center text-center mb-20">
-          <div className="space-y-6 z-10 mt-16">
-            <h1 className="text-4xl font-extrabold tracking-tight">
+        <motion.section
+          className="relative w-full max-w-3xl flex flex-col items-center text-center mb-20"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.div className="space-y-6 z-10 mt-16">
+            <motion.h1
+              className="text-4xl font-extrabold tracking-tight"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Let's Connect
-            </h1>
-            <p className="text-lg text-gray-600">
+            </motion.h1>
+            <motion.p
+              className="text-lg text-gray-600"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Share your goals and challenges. We typically respond within one
               business day.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
               <Link
                 href="/quote"
                 className="inline-flex items-center justify-center rounded-lg bg-indigo-600 text-white font-medium px-6 py-3 text-sm shadow-md hover:bg-indigo-700 transition-all"
@@ -38,16 +59,21 @@ export default function ContactPage() {
               >
                 Explore Services
               </Link>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
         {/* Contact Info & Form Section */}
         <section className="relative w-full max-w-5xl grid gap-8 md:grid-cols-2 z-10">
           {/* Contact Info */}
           <div className="space-y-6">
             {/* Email Card */}
-            <div className="flex items-center gap-4 rounded-xl bg-indigo-50 p-6 shadow-lg hover:shadow-2xl transition-shadow">
+            <motion.div
+              className="flex items-center gap-4 rounded-xl bg-indigo-50 p-6 shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-indigo-600"
@@ -66,10 +92,15 @@ export default function ContactPage() {
                 <h2 className="text-lg font-semibold mb-1">Email</h2>
                 <p className="text-gray-500">hello@linkinnovations.dev</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Location Card */}
-            <div className="flex items-center gap-4 rounded-xl bg-indigo-50 p-6 shadow-lg hover:shadow-2xl transition-shadow">
+            <motion.div
+              className="flex items-center gap-4 rounded-xl bg-indigo-50 p-6 shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-indigo-600"
@@ -94,11 +125,16 @@ export default function ContactPage() {
                 <h2 className="text-lg font-semibold mb-1">Location</h2>
                 <p className="text-gray-500">Remote-first • Global clients</p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Contact Form */}
-          <form className="bg-indigo-50 px-6 pt-6 pb-3 rounded-xl shadow-lg space-y-4 hover:shadow-2xl transition-shadow">
+          <motion.form
+            className="bg-indigo-50 px-6 pt-6 pb-3 rounded-xl shadow-lg space-y-4 hover:shadow-2xl transition-shadow"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             <h2 className="text-xl font-semibold">Send Us a Message</h2>
             <input
               type="text"
@@ -121,14 +157,30 @@ export default function ContactPage() {
             >
               Submit
             </button>
-          </form>
+          </motion.form>
         </section>
 
         {/* Decorative Floating Shapes */}
-        <div className="absolute -top-40 left-1/4 w-80 h-80 rounded-full bg-pink-200 opacity-40 blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 right-1/3 w-96 h-96 rounded-full bg-blue-200 opacity-30 blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-purple-200 opacity-20 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-0 w-60 h-60 rounded-full bg-yellow-100 opacity-30 blur-3xl animate-pulse"></div>
+        <motion.div
+          className="absolute -top-40 left-1/4 w-80 h-80 rounded-full bg-pink-200 opacity-40 blur-3xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-40 right-1/3 w-96 h-96 rounded-full bg-blue-200 opacity-30 blur-3xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-purple-200 opacity-20 blur-3xl"
+          animate={{ x: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-0 w-60 h-60 rounded-full bg-yellow-100 opacity-30 blur-3xl"
+          animate={{ x: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+        />
       </main>
     </>
   );

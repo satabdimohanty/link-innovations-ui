@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, Clock, Users } from "lucide-react";
+import { Briefcase, Clock, Users, Globe, Layers, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const engagementModels = [
@@ -18,6 +18,21 @@ const engagementModels = [
     title: "Dedicated Team",
     desc: "A team of experts works exclusively on your project, acting as an extension of your in-house staff.",
     icon: Users,
+  },
+  {
+    title: "Offshore Development Center",
+    desc: "Leverage cost-effective global talent with a dedicated offshore team aligned to your goals.",
+    icon: Globe,
+  },
+  {
+    title: "Hybrid Model",
+    desc: "Combine fixed price for core features with time & material for enhancements and iterations.",
+    icon: Layers,
+  },
+  {
+    title: "Managed Services",
+    desc: "End-to-end ownership where we manage everything from development to ongoing support.",
+    icon: Sparkles,
   },
 ];
 
@@ -51,10 +66,10 @@ export default function EngagementModelsSection() {
           {engagementModels.map(({ title, desc, icon: Icon }, i) => (
             <motion.div
               key={title}
-              className="group rounded-xl bg-white/80 shadow-md p-6 hover:shadow-lg hover:scale-105 transition transform duration-300"
+              className="group rounded-xl bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100 shadow-md p-6 hover:shadow-lg hover:scale-105 transition transform duration-300"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.15 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.12 }}
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-4 mb-3">

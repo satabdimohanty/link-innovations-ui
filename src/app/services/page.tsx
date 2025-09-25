@@ -15,206 +15,183 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import TrustedCarousel from "./TrustedCarousel";
 import VideoDemoSection from "./VideoDemoSection";
+import CaseStudiesSection from "./CaseStudies";
 import AchievementsSection from "./AchevementsSection";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import EngagementModelsSection from "./EngagementModels";
 import WhyChooseUs from "./WhyChooseUs";
-import CaseStudiesSection from "./CaseStudies";
-
+import { useState } from "react";
 const services = [
-  // Core Development
   {
     title: "Custom Software Development",
-    desc: "Web apps, desktop software, and enterprise solutions tailored for your business.",
+    desc: "We design and develop software solutions specifically for your business needs. Our team ensures scalability, performance, and security for every project. From internal tools to enterprise platforms, we deliver software that drives results.",
     icon: Code2,
+    slug: "custom-software-development",
   },
   {
     title: "Mobile App Development",
-    desc: "Native (iOS, Android) and cross-platform apps with modern UX.",
+    desc: "We create mobile applications that are engaging, fast, and reliable. Whether it's native iOS/Android or cross-platform solutions, we focus on excellent UX and performance. Your app will be ready to reach users on any device seamlessly.",
     icon: Smartphone,
+    slug: "mobile-app-development",
   },
   {
     title: "Web Development",
-    desc: "Full-stack solutions using React, Angular, Node.js, .NET, and more.",
+    desc: "Our web development services cover everything from responsive front-end interfaces to robust back-end systems. We build websites and web apps that are fast, secure, and easy to maintain. Using modern frameworks, we ensure a seamless user experience.",
     icon: Cloud,
+    slug: "web-development",
   },
   {
     title: "Cloud & DevOps",
-    desc: "AWS, Azure, GCP setups, CI/CD pipelines, observability, and IaC.",
+    desc: "We help businesses migrate to the cloud and optimize infrastructure. With CI/CD pipelines, automated deployments, and observability tools, your applications remain scalable and reliable. Our DevOps approach ensures faster delivery and higher uptime.",
     icon: Workflow,
+    slug: "cloud-devops",
   },
-
-  // Advanced / Trending
   {
     title: "AI & Machine Learning",
-    desc: "Chatbots, predictive analytics, NLP, computer vision, and AI integration.",
+    desc: "We integrate AI and machine learning to unlock the full potential of your data. From predictive analytics to intelligent chatbots and computer vision applications, our solutions enhance decision-making and efficiency. Make your business smarter with AI-driven insights.",
     icon: Wand2,
+    slug: "ai-machine-learning",
   },
   {
     title: "Data Engineering & Analytics",
-    desc: "Data warehousing, Big Data pipelines, and BI dashboards.",
+    desc: "Our data engineering and analytics services transform raw data into actionable insights. We build robust pipelines, warehouses, and dashboards that help you make informed decisions. Understand trends, monitor KPIs, and gain a competitive edge with data-driven strategies.",
     icon: Database,
-  },
-  {
-    title: "IoT & Embedded Solutions",
-    desc: "Smart devices, wearables, and industrial IoT integrations.",
-    icon: Shield,
-  },
-  {
-    title: "Blockchain & Web3",
-    desc: "Smart contracts, DApps, crypto wallets, and token integrations.",
-    icon: Rocket,
-  },
-
-  // Business / Enterprise
-  {
-    title: "Enterprise Solutions",
-    desc: "ERP, CRM, HRMS, PowerApps, SharePoint, and workflow automation.",
-    icon: Workflow,
-  },
-  {
-    title: "SaaS Development",
-    desc: "End-to-end SaaS products with multi-tenancy, billing, and scaling.",
-    icon: Cloud,
-  },
-
-  // QA & Support
-  {
-    title: "Software Testing & QA",
-    desc: "Automated/manual testing, performance, and compliance audits.",
-    icon: Shield,
-  },
-  {
-    title: "Maintenance & Support",
-    desc: "Bug fixes, performance optimization, and version upgrades.",
-    icon: Code2,
-  },
-
-  // Add-ons
-  {
-    title: "UI/UX Design",
-    desc: "Wireframes, prototyping, usability testing, and responsive design.",
-    icon: Smartphone,
-  },
-  {
-    title: "IT Consulting & Strategy",
-    desc: "Tech roadmaps, architecture design, and legacy modernization.",
-    icon: Cloud,
-  },
-  {
-    title: "Dedicated Teams",
-    desc: "Hire developers on-demand, remote/offshore development teams.",
-    icon: Rocket,
+    slug: "data-engineering-analytics",
   },
 ];
 
 export default function ServicesPageClient() {
+  const [selectedService, setSelectedService] = useState(services[0]);
+
   return (
     <main className="relative min-h-screen w-full text-gray-800 overflow-hidden bg-gradient-to-b from-indigo-50 via-white to-pink-50">
-      {/* Subtle animated light blobs in background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-10 left-1/4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
-      </div>
-
       {/* Hero Section */}
-      <motion.section
-        className="mx-auto max-w-4xl text-center py-20 px-6"
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ amount: 0.2 }}
-      >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
-          Build and ship software on a single, collaborative platform
-        </h1>
-        <p className="mt-4 text-base sm:text-lg text-gray-600">
-          Join the world’s most widely adopted AI-powered developer platform.
-        </p>
 
-        {/* Email Signup & CTA */}
-        <div className="mx-auto mt-8 flex w-full max-w-lg flex-col items-center justify-center gap-2 sm:flex-row">
-          <form className="relative flex w-full flex-1 items-center">
-            <label htmlFor="email-signup" className="sr-only">
-              Enter your email
-            </label>
-            <Input
-              id="email-signup"
-              type="email"
-              placeholder="Enter your email"
-              className="h-12 w-full rounded-md border border-gray-300 bg-white pl-4 pr-[168px] text-base text-black placeholder:text-gray-500 focus-visible:ring-primary"
-            />
-            <Button
-              type="submit"
-              className="absolute bottom-1 right-1 top-1 rounded bg-indigo-600 px-4 text-base font-semibold text-white hover:bg-indigo-700"
-            >
-              Sign up
-            </Button>
-          </form>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 w-full border-2 border-gray-800 bg-transparent px-6 text-base font-medium text-gray-900 hover:bg-gray-200 sm:w-auto transition-colors"
-          >
-            <Link href="/copilot">Try Our AI Copilot</Link>
-          </Button>
+      <motion.section
+        className="relative w-full py-32 overflow-hidden bg-gray-50"
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* AI-style Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Larger blurred circles */}
+          <div className="absolute top-[-10%] left-[-20%] w-[70%] h-[70%] bg-indigo-300/30 rounded-full blur-3xl animate-blob"></div>
+          <div className="absolute bottom-[-10%] right-[-15%] w-[60%] h-[60%] bg-pink-300/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+
+          {/* Nodes */}
+          <div className="absolute top-16 left-1/4 w-4 h-4 bg-indigo-400 rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-1/3 w-3 h-3 bg-pink-400 rounded-full animate-pulse delay-500"></div>
+          <div className="absolute bottom-28 left-1/2 w-5 h-5 bg-cyan-400 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-60 left-3/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-700"></div>
+
+          {/* Lines connecting nodes */}
+          <div className="absolute top-20 left-28 w-[220px] h-[1px] bg-indigo-300 rotate-12 opacity-70"></div>
+          <div className="absolute top-44 right-32 w-[180px] h-[1px] bg-pink-300 rotate-45 opacity-70"></div>
+          <div className="absolute bottom-32 left-1/2 w-[200px] h-[1px] bg-cyan-300 rotate-30 opacity-70"></div>
+          <div className="absolute top-64 left-2/3 w-[160px] h-[1px] bg-purple-300 rotate-60 opacity-70"></div>
         </div>
+
+        {/* Content */}
+        <div className="relative mx-auto max-w-4xl text-center px-6">
+          <motion.h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+            Build and ship software on a single, collaborative platform
+          </motion.h1>
+
+          <p className="mt-4 text-base sm:text-lg text-gray-600">
+            Join the world’s most widely adopted AI-powered developer platform.
+          </p>
+        </div>
+
+        <style jsx>{`
+          @keyframes blob {
+            0%,
+            100% {
+              transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+              transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+          }
+          .animate-blob {
+            animation: blob 10s infinite;
+          }
+          .animation-delay-2000 {
+            animation-delay: 2s;
+          }
+        `}</style>
       </motion.section>
 
-      {/* Services Grid */}
-      <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-12">
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ title, desc, icon: Icon }, i) => (
-            <motion.div
-              key={title}
-              className="group rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition duration-300"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.1 }}
-              viewport={{ amount: 0.2 }}
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
-                  <Icon className="h-6 w-6" />
+      {/* Services Showcase */}
+      <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-12 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Left: Services List */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-full">
+            {services.map((service) => (
+              <motion.div
+                key={service.title}
+                onClick={() => setSelectedService(service)}
+                className={`cursor-pointer rounded-xl p-4 flex flex-col items-start gap-3 transition transform duration-300
+        ${
+          selectedService.title === service.title
+            ? "bg-indigo-100 shadow-lg scale-105"
+            : "bg-gradient-to-r from-blue-200 via-gray-300 to-gray-200 shadow-md hover:shadow-xl hover:scale-105"
+        }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <service.icon className="h-8 w-8 text-indigo-600" />
+                <h3 className="text-base font-semibold text-gray-900">
+                  {service.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right: Selected Service Details */}
+          <div className="flex items-start justify-start">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedService.title}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-lg bg-gradient-to-br from-indigo-50 via-white to-pink-50 rounded-xl p-8 border border-gray-200 shadow-md flex flex-col justify-start min-h-[320px]"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <selectedService.icon className="h-10 w-10 text-indigo-600" />
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {selectedService.title}
+                  </h2>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-              </div>
-              <p className="mt-3 text-gray-600">{desc}</p>
-            </motion.div>
-          ))}
+                <p className="text-gray-700 text-base leading-relaxed mb-6">
+                  {selectedService.desc}
+                </p>
+
+                {/* Learn More Button */}
+                <Link href={`/services/${selectedService.slug}`}>
+                  <button className="mt-auto px-5 py-2 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
+                    Learn More →
+                  </button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
-
-        {/* Bottom CTA Buttons */}
-        <motion.div
-          className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ amount: 0.2 }}
-        >
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-lg border border-gray-400 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 transition"
-          >
-            Contact Us
-          </Link>
-          <Link
-            href="/quote"
-            className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition"
-          >
-            Get a Quote
-          </Link>
-        </motion.div>
       </section>
-
-      {/* Additional Sections */}
+      {/* Other Sections */}
       <TrustedCarousel />
       <VideoDemoSection />
+      <CaseStudiesSection />
       <EngagementModelsSection />
       <WhyChooseUs />
       <AchievementsSection />
-      <CaseStudiesSection />
     </main>
   );
 }

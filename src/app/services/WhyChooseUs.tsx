@@ -4,12 +4,30 @@ import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
   const usps = [
-    { title: "⚡ Fast Delivery", desc: "We deliver projects quickly without compromising on quality." },
-    { title: "🎯 Domain Expertise", desc: "Our experts bring deep knowledge across multiple industries." },
-    { title: "📈 Scalable Solutions", desc: "We build solutions that grow with your business." },
-    { title: "💡 Innovative Approach", desc: "We use cutting-edge technologies to create smarter solutions." },
-    { title: "🤝 Client Collaboration", desc: "We involve you in every step to ensure your vision is realized." },
-    { title: "🔒 Security & Reliability", desc: "Your applications are built with strong security and high availability in mind." },
+    {
+      title: "⚡ Fast Delivery",
+      desc: "We deliver projects quickly without compromising on quality.",
+    },
+    {
+      title: "🎯 Domain Expertise",
+      desc: "Our experts bring deep knowledge across multiple industries.",
+    },
+    {
+      title: "📈 Scalable Solutions",
+      desc: "We build solutions that grow with your business.",
+    },
+    {
+      title: "💡 Innovative Approach",
+      desc: "We use cutting-edge technologies to create smarter solutions.",
+    },
+    {
+      title: "🤝 Client Collaboration",
+      desc: "We involve you in every step to ensure your vision is realized.",
+    },
+    {
+      title: "🔒 Security & Reliability",
+      desc: "Your applications are built with strong security and high availability in mind.",
+    },
   ];
 
   return (
@@ -27,19 +45,26 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Why Choose Us</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">
+          Why Choose Us
+        </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           {usps.map((usp, i) => (
             <motion.div
               key={i}
-              className="p-6 rounded-2xl bg-white/80 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300"
+              className="p-6 rounded-2xl bg-gradient-to-r from-blue-200 via-gray-300 to-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300 relative overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{usp.title}</h3>
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 opacity-30 animate-pulse rounded-2xl -z-10"></div>
+
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">
+                {usp.title}
+              </h3>
               <p className="text-gray-700 text-sm">{usp.desc}</p>
             </motion.div>
           ))}

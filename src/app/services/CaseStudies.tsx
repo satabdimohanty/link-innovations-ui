@@ -63,9 +63,8 @@ export default function CaseStudiesSection() {
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ amount: 0.2 }}
-        >
-          Case Studies / Portfolio
+          viewport={{ amount: 0.2 }}>
+          Case Studies
         </motion.h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -90,7 +89,9 @@ export default function CaseStudiesSection() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-1 text-gray-900">{title}</h3>
+                  <h3 className="text-lg font-semibold mb-1 text-gray-900">
+                    {title}
+                  </h3>
                   <p className="text-sm text-gray-700 mb-2">{client}</p>
                   <p className="text-gray-700 text-sm mb-2">{description}</p>
                   <div className="flex flex-wrap gap-2 mb-2">
