@@ -102,7 +102,7 @@ export default function SolutionsPage() {
         ></motion.div>
 
         {/* Solutions Grid */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-7xl mx-auto">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12 max-w-7xl mx-auto">
           {solutions.map((solution, i) => (
             <motion.div
               key={solution.title}

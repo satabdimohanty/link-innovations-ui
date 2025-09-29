@@ -1,5 +1,4 @@
 "use client";
-
 import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -9,7 +8,7 @@ export default function ContactPage() {
     <>
       <Head>
         <title>Contact | Link Innovations</title>
-        <meta 
+        <meta
           name="description"
           content="Get in touch with Link Innovations to discuss your project."
         />
